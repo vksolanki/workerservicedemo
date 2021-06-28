@@ -31,8 +31,6 @@ jobs:
                          # service exists and is running, so stop it first
                         Write-Output "Stopping service: $serviceName"
                         Stop-Service "WSDemo"
-                    } else {
-                        Remove-Service -Name "WSDemo"
                     }
         }
     - name: Service create
