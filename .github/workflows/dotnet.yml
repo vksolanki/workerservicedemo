@@ -24,3 +24,25 @@ jobs:
     - name: Copy
       run: |
         Copy-Item ./published/* C:/WSDemo -Recurse -Force
+    - name: Setup Service
+      run: |
+                $pathToZipFile = "Name of your-artifact-zipped-file;
+                $serviceName = "WSDemoService";
+                $executable="WorkerDemo.exe";
+                $serviceDir="C:/WSDemo";
+                $serviceDescription = "Your service description";
+                $binaryPath = "$serviceDir\$executable";
+                # need to check and stop existing service. Otherwise, we get 
+                # access error when replacing the old codes with the new ones 
+                # if the service is running. 
+                If (Get-Service $serviceName -ErrorAction SilentlyContinue) {
+                    If ((Get-Service $serviceName).Status -eq 'Running') {
+                         # service exists and is running, so stop it first
+                        Write-Output "Stopping service: $serviceName"
+                        Stop-Service $serviceName
+                    } 
+                } else {
+                    # service does not exist. So let's create it. We are not
+                    # going to start the service until we have put the new codes. 
+                    New-Service -Name $serviceName -Description $serviceDescription -BinaryPathName $binaryPath;
+                }
