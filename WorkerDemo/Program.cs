@@ -14,15 +14,16 @@ namespace WorkerDemo
         {
             Log.Logger = new LoggerConfiguration()
                 .MinimumLevel.Debug()
-                .WriteTo.File("logs\\log.txt", rollingInterval: RollingInterval.Day)
+                .WriteTo.File(AppDomain.CurrentDomain.BaseDirectory + "logs\\log.txt", rollingInterval: RollingInterval.Day)
                 .CreateLogger();
             CreateHostBuilder(args).Build().Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-                .UseWindowsService()
                 .UseSerilog()
+                .UseWindowsService()
+                .ConfigureLogging(loggerFactory => loggerFactory.AddSerilog())
                 .ConfigureServices((hostContext, services) =>
                 {
                     services.AddHostedService<Worker>();
