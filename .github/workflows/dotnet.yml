@@ -21,11 +21,11 @@ jobs:
       run: dotnet restore
     - name: Publish
       run: dotnet publish -c Release -o ./published
-    - name: PowerShell script
+    - name: Copy Publish Content 1
       # You may pin to the exact commit or the version.
       # uses: Amadevus/pwsh-script@1f1751bbf3d1a92127bfc6c32403283625880cbf
-      run: xcopy './published' 'C:\WSDemo' /E /H /C /I
-    - name: PowerShell script
+      run: xcopy ./published 'C:\WSDemo' /E /H /C /I
+    - name: PowerShell script 2
           # You may pin to the exact commit or the version.
           # uses: Amadevus/pwsh-script@1f1751bbf3d1a92127bfc6c32403283625880cbf
       uses: Amadevus/pwsh-script@v2.0.1
