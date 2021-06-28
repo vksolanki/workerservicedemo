@@ -32,7 +32,7 @@ jobs:
         sc delete WSDemo
     - name: Service create
       run: |
-        sc create WSDemo binPath= C:\WSDemo\WorkerDemo.exe
+        sc create WSDemo binPath= 'C:\WSDemo\WorkerDemo.exe'
     - name: Service start
       run: |
         sc start WSDemo
