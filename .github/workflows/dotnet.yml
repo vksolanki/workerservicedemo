@@ -31,11 +31,10 @@ jobs:
                          # service exists and is running, so stop it first
                         Write-Output "Stopping service: $serviceName"
                         Stop-Service "WSDemo"
+                    } 
+        } else {
+                         New-Service -Name "WSDemo" -BinaryPathName 'C:\WSDemo\WorkerDemo.exe'
                     }
-        }
-    - name: Service create
-      run: |
-        New-Service -Name "WSDemo" -BinaryPathName 'C:\WSDemo\WorkerDemo.exe'
     - name: Service start
       run: |
         Start-Service -Name "WSDemo"
