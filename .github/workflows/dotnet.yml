@@ -27,6 +27,6 @@ jobs:
     - name: Setup Service
       run: |
         sc stop WSDemo
-				sc delete WSDemo
-				sc create WSDemo binPath= C:\WSDemo\WorkerDemo.exe
-				sc start WSDemo
+	sc delete WSDemo
+	sc create WSDemo binPath= C:\WSDemo\WorkerDemo.exe
+	sc start WSDemo
