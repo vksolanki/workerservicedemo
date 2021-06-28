@@ -22,18 +22,18 @@ jobs:
     - name: Publish
       run: dotnet publish -c Release -o ./published
     - name: PowerShell script
-          # You may pin to the exact commit or the version.
-          # uses: Amadevus/pwsh-script@1f1751bbf3d1a92127bfc6c32403283625880cbf
-          uses: Amadevus/pwsh-script@v2.0.1
-          with:
-              script: |
+      # You may pin to the exact commit or the version.
+      # uses: Amadevus/pwsh-script@1f1751bbf3d1a92127bfc6c32403283625880cbf
+      uses: Amadevus/pwsh-script@v2.0.1
+      with:
+            script: |
                 Copy-Item -Path ./published/* -Destination :\TempContent -PassThru
     - name: PowerShell script
           # You may pin to the exact commit or the version.
           # uses: Amadevus/pwsh-script@1f1751bbf3d1a92127bfc6c32403283625880cbf
-          uses: Amadevus/pwsh-script@v2.0.1
-          with:
-              script: |
+      uses: Amadevus/pwsh-script@v2.0.1
+      with:
+            script: |
                 $pathToZipFile = "Name of your-artifact-zipped-file;
                 $serviceName = "your service name";
                 $executable="Name of the .exe file ";
