@@ -19,9 +19,5 @@ jobs:
         dotnet-version: 5.0.x
     - name: Restore dependencies
       run: dotnet restore
-    - name: Build
-      run: dotnet build --no-restore
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
     - name: Publish
-      run: dotnet publish --no-build -c Release -o ./published
+      run: dotnet publish -c Release -o ./published
