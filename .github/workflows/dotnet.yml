@@ -26,7 +26,5 @@ jobs:
         Copy-Item ./published/* C:/WSDemo -Recurse -Force
     - name: Setup Service
       run: |
-      	sc stop WSDemo
-	sc delete WSDemo
-	sc create WSDemo binPath= C:\WSDemo\WorkerDemo.exe
-	sc start WSDemo
+	echo "A initial message"
+        echo "Another message or command"
