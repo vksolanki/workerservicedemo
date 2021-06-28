@@ -26,13 +26,13 @@ jobs:
         Copy-Item ./published/* C:/WSDemo -Recurse -Force
     - name: Service Stop
       run: |
-        sc stop WSDemo
+        Stop-Service -Name "WSDemo"
     - name: Service delete
       run: |
-        sc delete WSDemo
+        Remove-Service -Name "WSDemo"
     - name: Service create
       run: |
-        sc create WSDemo binPath= 'C:\WSDemo\WorkerDemo.exe'
+        New-Service -Name "WSDemo" -BinaryPathName '"C:\WSDemo\WorkerDemo.exe"'
     - name: Service start
       run: |
-        sc start WSDemo
+        Start-Service -Name "WSDemo"
