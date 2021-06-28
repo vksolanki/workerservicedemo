@@ -22,7 +22,5 @@ jobs:
     - name: Publish
       run: dotnet publish -c Release -o ./published
     - name: Copy
-      uses: andstor/copycat-action@v3
-      with:
-        src_path: ./published
-        dst_path: C:/WSDemo/
+      run: |
+        Copy-Item ./published/* C:/WSDemo -Recurse -Force
