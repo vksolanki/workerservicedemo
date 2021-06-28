@@ -35,7 +35,7 @@ jobs:
         }
     - name: Service create
       run: |
-        New-Service -Name "WSDemo" -BinaryPathName '"C:\WSDemo\WorkerDemo.exe"'
+        New-Service -Name "WSDemo" -BinaryPathName 'C:\WSDemo\WorkerDemo.exe'
     - name: Service start
       run: |
         Start-Service -Name "WSDemo"
